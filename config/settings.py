@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     "products.apps.ProductsConfig",
     "storefront.apps.StorefrontConfig",
     "iam.apps.IamConfig",
+    "health_check",
+    "health_check.db",
+    "health_check.cache",
+    "health_check.storage",
+    "health_check.contrib.migrations",
 ]
 
 MIDDLEWARE = [

@@ -4,23 +4,17 @@
 
 ## Getting Started
 
-### Prepare the database
+PetStore uses Docker and Docker Compose for local development.
 
 ```console
-$ createdb petstore # Take note of your credentials for further usage.
+$ cp .env.example .env # Customized as necessary
+$ docker compose up # Will block the current terminal, open a new one for the admin commands
 ```
-
-### Install the dependencies
+You can now access the site at http://localhost:8000/
 
 ```console
-$ python3 -m venv venv
-$ source ./venv/bin/activate
-$ pip install -r requirements.txt
-$ cp .env.example .env # Fill out the necessary details.
+$ docker compose exec web python manage.py migrate
+$ docker compose exec web python manage.py createsuperuser
 ```
 
-### Run the server
-
-```console
-$ ./manage.py runserver
-```
+At this point, you can now log into the admin panel at http://localhost:8000/login

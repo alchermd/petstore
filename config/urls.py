@@ -36,4 +36,5 @@ urlpatterns = [
         products_views.product_delete,
         name="product-delete",
     ),
+    path("health/", include("health_check.urls")),
 ]
