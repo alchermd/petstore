@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+{% block content %}
+    <h1>Product Delete</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset>
+            {{ form.as_table }}
+        </fieldset>
+
+        <input type="submit" value="Confirm Deletion">
+    </form>
+{% endblock %}

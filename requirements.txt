@@ -1,0 +1,4 @@
+psycopg2-binary==2.9.8
+Django==4.2.5
+python-dotenv==1.0.0
+pre-commit
