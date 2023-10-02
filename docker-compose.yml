@@ -1,0 +1,21 @@
+services:
+  web:
+    build: "."
+    env_file:
+      - ".env"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ".:/usr/app"
+    depends_on:
+      - "db"
+
+  db:
+    image: "postgres:12.16-bookworm@sha256:605f20a70c8d98121cb010d3755892e574803fb7aac50f051194ce21980eaf69"
+    restart: "always"
+    environment:
+      POSTGRES_DB: "petstore"
+      POSTGRES_USER: "petstore_user"
+      POSTGRES_PASSWORD: "petstore_password"
+    volumes:
+      - "./data/db:/var/lib/postgresql/data"

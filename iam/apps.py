@@ -1,5 +1,6 @@
 from django.apps import AppConfig
-from django.contrib.auth.signals import user_logged_out, user_logged_in
+from django.contrib.auth.signals import user_logged_in
+from django.contrib.auth.signals import user_logged_out
 
 from iam import signals
 

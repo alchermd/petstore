@@ -1,7 +1,11 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
+from django.shortcuts import render
+from django.shortcuts import reverse
 
-from products import forms, services
+from products import forms
+from products import services
 from products.models import Product
 
 
