@@ -82,7 +82,7 @@ function psql {
   # Connect to PostgreSQL
   # shellcheck disable=SC1091
   . .env
- _dc postgres psql -U "${POSTGRES_USER}" "${@}"
+  _dc db psql "${DB_DATABASE}" -U "${DB_USER}" "${@}"
 }
 
 function ci:install-deps {
@@ -110,8 +110,8 @@ function ci:test {
   # shellcheck disable=SC1091
   . .env
   wait-until "docker compose exec -T \
-    -e PGPASSWORD=${POSTGRES_PASSWORD} postgres \
-    psql -U ${POSTGRES_USER} ${POSTGRES_USER} -c 'SELECT 1'"
+    -e PGPASSWORD=${DB_PASSWORD} db \
+    psql ${DB_DATABASE} -U ${DB_USER} -c 'SELECT 1'"
 
   docker compose logs
 
