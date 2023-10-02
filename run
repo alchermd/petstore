@@ -111,7 +111,7 @@ function ci:test {
   . .env
   wait-until "docker compose exec -T \
     -e PGPASSWORD=${DB_PASSWORD} db \
-    psql -U ${DB_USER} ${DB_USER} -c 'SELECT 1'"
+    psql ${DB_DATABASE} -U ${DB_USER} -c 'SELECT 1'"
 
   docker compose logs
 
