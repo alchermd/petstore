@@ -1,5 +1,7 @@
 FROM python:3.11.5-slim@sha256:a28fdf3bde6c0c97b656841669f6b4cc8164d0f34067c6ce6b5532effe94f8a7 as build
 
+WORKDIR /usr/app
+
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
@@ -10,13 +12,15 @@ RUN python -m venv /usr/venv
 ENV PATH="/usr/venv/bin:$PATH"
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 
 FROM python:3.11.5-slim@sha256:a28fdf3bde6c0c97b656841669f6b4cc8164d0f34067c6ce6b5532effe94f8a7
 
 RUN apt-get update && \
-    apt-get install -y  --no-install-recommends curl
+    apt-get install -y  --no-install-recommends curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN groupadd python && \
     useradd -r -g python usr && \
