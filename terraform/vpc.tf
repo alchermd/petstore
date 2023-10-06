@@ -59,3 +59,24 @@ resource "aws_route_table_association" "public_subnet_assoc" {
   subnet_id      = element(aws_subnet.public_subnets[*].id, count.index)
   route_table_id = aws_route_table.second_rt.id
 }
+
+resource "aws_security_group" "security_group" {
+  name   = "ecs-security-group"
+  vpc_id = aws_vpc.main.id
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    self        = "false"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "any"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
