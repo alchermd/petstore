@@ -1,7 +1,7 @@
 FROM python:3.11.5-slim@sha256:a28fdf3bde6c0c97b656841669f6b4cc8164d0f34067c6ce6b5532effe94f8a7 as build
 
 LABEL org.opencontainers.image.authors="github.com/alchermd"
-LABEL org.opencontainers.image.description="`petstore` is a webapp for managing a pet store's inventory. It has a public storefront and an administrative management backend. It is a monolithic Django application that utilizes Django Templates for the frontend, and PostgreSQL as its data store."
+LABEL org.opencontainers.image.description="petstore is a webapp for managing a pet store's inventory."
 
 WORKDIR /usr/app
 
