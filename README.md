@@ -8,13 +8,13 @@ PetStore uses Docker and Docker Compose for local development.
 
 ```console
 $ cp .env.example .env # Customized as necessary
-$ docker compose up # Will block the current terminal, open a new one for the admin commands
+$ docker compose up --build # Will block the current terminal, open a new one for the admin commands
 ```
 You can now access the site at http://localhost:8000/
 
 ```console
-$ docker compose exec web python manage.py migrate
-$ docker compose exec web python manage.py createsuperuser
+$ ./run django migrate
+$ ./run django createsuperuser
 ```
 
 At this point, you can now log into the admin panel at http://localhost:8000/login
